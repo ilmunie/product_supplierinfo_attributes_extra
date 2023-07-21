@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_supplierinfo_variant_info,product_supplierinfo_attributes_extra.product_supplierinfo_variant_info,model_supplier_variant_info,base.group_user,1,1,1,1
+
+
