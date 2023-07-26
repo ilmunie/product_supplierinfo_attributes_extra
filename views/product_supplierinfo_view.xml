@@ -20,7 +20,6 @@
                                        options="{'no_create':True,'no_quick_create':True,'no_open_and_create':True}">
                                 </field>
                                 <field name="extra_amount"/>
-                                <field name="product_template_id"/>
                             </tree>
                         </field>
                     </page>
