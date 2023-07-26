@@ -6,7 +6,7 @@ class ProductSupplierInfoVarianInfo(models.Model):
     attribute_ids = fields.Many2many(comodel_name='product.template.attribute.value', string="Atributos")
     extra_amount = fields.Float(string="Valor extra")
     pricelist_id = fields.Many2one('product.supplierinfo')
-    #product_template_id = fields.Many2one(related='pricelist_id.product_tmpl_id',store=True,readonly=False)
+    product_template_id = fields.Many2one(related='pricelist_id.product_tmpl_id',store=True,readonly=False)
 
     def name_get(self):
         res = []
@@ -25,6 +25,9 @@ class ProductSupplierInfoVarianInfo(models.Model):
         for rec in self:
             if rec.pricelist_id and rec.pricelist_id.product_tmpl_id:
                 #import pdb;pdb.set_trace()
-                return {'domain':{'attribute_ids': [('id','in',rec.pricelist_id.product_tmpl_id.attribute_line_ids.product_template_value_ids.mapped('id'))]}}
+                ids = []
+                for attribute_line in rec.pricelist_id.product_tmpl_id.attribute_line_ids:
+                    ids.extend(attribute_line.values_ids.mapped('id'))
+                return {'domain':{'attribute_ids': [('id','in',ids)]}}
             else:
                 return
