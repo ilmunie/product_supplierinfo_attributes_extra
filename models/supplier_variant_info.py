@@ -27,7 +27,7 @@ class ProductSupplierInfoVarianInfo(models.Model):
                 #import pdb;pdb.set_trace()
                 ids = []
                 for attribute_line in rec.pricelist_id.product_tmpl_id.attribute_line_ids:
-                    ids.extend(attribute_line.values_ids.mapped('id'))
+                    ids.extend(attribute_line.value_ids.mapped('id'))
                 return {'domain':{'attribute_ids': [('id','in',ids)]}}
             else:
                 return
