@@ -3,7 +3,7 @@ class ProductSupplierInfo(models.Model):
     _inherit = 'product.supplierinfo'
 
     has_extras = fields.Boolean(string="¿Tiene extras?")
-    variant_extra_ids = fields.One2many('supplier.variant.info', 'pricelist_id')
+    variant_extra_ids = fields.One2many('supplier.variant.info', 'pricelist_id',copy=True)
     def get_final_price(self, product=False):
         res = self
         final_price = res.price
